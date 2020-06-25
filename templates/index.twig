@@ -1,0 +1,32 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    Main Content
+                </div>
+                <div class="card-body">
+                    <h1>fergferger</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere nulla, consectetur vel exercitationem amet, dolore repellat necessitatibus ut eligendi dignissimos natus eos omnis assumenda quod nihil explicabo repellendus sed nostrum.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    Sidebar
+                </div>
+                <div class="card-body">
+                    <div id="playersStatus" class="text-center">
+                        {players.count} players online
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

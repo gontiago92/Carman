@@ -1,0 +1,70 @@
+.auth {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+    font-size: 14px;
+}
+
+.auth .title {
+    margin: 40px auto;
+}
+  
+.auth .col {
+    margin: 0;
+    padding: 20px;
+    background: #0d47a1;
+    width: 50%;
+    color: #fff;
+}
+  
+.auth .col:first-child {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.auth .form-group input {
+    margin: 5px 0;
+    padding: 8px 10px;
+    display: block;
+    width: 100%;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    outline: none;
+}
+  
+.auth .form-group .btn-group {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.auth .form-group .btn-group input{
+    border: 2px solid #fff;
+    background: #fff;
+    color: #0d47a1;
+}
+
+.auth .form-group .btn-group input:hover {
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+  
+.auth .form-group .btn-group input:first-child {
+    width: 45%;
+}
+  
+.auth .form-group .btn-group input:last-child {
+    width: 45%;
+}
