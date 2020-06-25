@@ -1,0 +1,28 @@
+{
+  "name": "carman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "browserify rendererConverter.js -o public/js/renderer.js",
+    "start": "nodemon --watch * --exec electron .",
+    "webserver": "nodemon --watch * ./server/app.js",
+    "bs": "browser-sync start --proxy \"localhost:3000\" --files \"./*\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.5.0",
+    "dotenv": "^8.2.0",
+    "electron": "^6.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.1",
+    "pug": "^2.0.4",
+    "twing": "^4.0.1"
+  },
+  "devDependencies": {
+    "electron-reload": "^1.5.0"
+  }
+}
