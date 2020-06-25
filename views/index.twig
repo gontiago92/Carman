@@ -31,7 +31,7 @@
             </div>
             <div class="col">
                 <form action="/auth/register" method="POST">
-                <h3 class="title">Autodis CarManager</h3>
+                <h3 class="title">Autodis CarManager {{ title }}</h3>
                 
                 <div class="form-group">
                     <label for="username">Username or Email</label>
@@ -45,8 +45,8 @@
                 
                 <div class="form-group">
                     <div class="btn-group">
-                    <input type="submit" name="dbsetup" value="Database Setup">
-                    <input type="submit" name="submit" value="Login">
+                        <a class="btn" href="/register">Register</a>
+                        <button class="btn" type="submit" name="submit">Login</button>
                     </div>
                 </div>
                 

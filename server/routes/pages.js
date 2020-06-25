@@ -6,13 +6,15 @@ const twing = new TwingEnvironment(loader);
 const router = express.Router()
 
 router.get('/', (req, res) => {
-    twing.render('index.twig', {'name': 'World'}).then((output) => {
+    twing.render('index.twig', { 'title': 'Login' }).then((output) => {
         res.end(output);
     });
 })
 
 router.get('/register', (req, res) => {
-    //res.render('register')
+    twing.render('register.twig', { 'title': 'Database Setup' }).then((output) => {
+        res.end(output);
+    });
 })
 
 module.exports = router
