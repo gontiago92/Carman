@@ -7,6 +7,7 @@ const loader = new TwingLoaderFilesystem('./templates');
 const twing = new TwingEnvironment(loader);
 const mysql = require('mysql')
 const dotenv = require('dotenv')
+const path = require('path')
 //var io = require("socket.io")(http)
 
 dotenv.config({path: './.env'})
@@ -25,9 +26,9 @@ const db = mysql.createConnection({
   database: process.env.DATABASE
 })
 
+const publicDirectory = path.join(process.cwd(), './public')
 
-app.use(express.static("public"))
-
+app.use(express.static(publicDirectory))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 

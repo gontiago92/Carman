@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <link rel="stylesheet" href="/css/flatly.min.css" />
+    <link href="/assets/fontawesome/css/all.css" rel="stylesheet" />
+    <link href="/css/app.css" rel="stylesheet" />
+    <link href="/css/auth.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header id="titlebar">
+        <div id="drag-region">
+            <div id="window-title"><span>CarMan</span></div>
+            <div id="window-controls">
+                <div class="button" id="min-button"><i class="fas fa-window-minimize"></i></div>
+                <div class="button" id="max-button"><i class="far fa-window-maximize"></i></div>
+                <div class="button" id="restore-button"><i class="far fa-window-restore"></i></div>
+                <div class="button" id="close-button"><i class="fas fa-times"></i></div>
+            </div>
+        </div>
+    </header>
+
+        <div class="auth">
+            <div class="col">
+                <img src="assets/images/logo.png" alt="">
+            </div>
+            <div class="col">
+                {% if message %}
+                    <div class="alert alert-dismissible alert-{{ type }} my-4">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/twing/dist/lib.min.js"></script>
+    <script src="./renderer.js"></script>
+</body>
+
+</html>
