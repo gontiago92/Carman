@@ -1,20 +1,33 @@
-const mysql = require('mysql')
+const db = require('../lib/db.js');
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-
 const { TwingEnvironment, TwingLoaderFilesystem } = require('twing');
 const loader = new TwingLoaderFilesystem('./views');
 const twing = new TwingEnvironment(loader);
 
-const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-})
+exports.ifNotLoggedin = (req, res, next) => {
+    if(!req.session.isLoggedIn){
+        return res.redirect('/');
+    }
+    next();
+},
+
+exports.ifLoggedin = (req, res, next) => {
+
+    if(req.session.isLoggedIn){
+        return res.redirect('/dashboard');
+    }
+
+    next();
+},
+
+exports.logout = (req,res)=>{
+    //session destroy
+    req.session = null;
+    res.redirect('/');
+}
 
 exports.login = async (req, res) => {
-    try {
         const { username, password } = req.body
 
         if(!username || !password) {
@@ -24,13 +37,20 @@ exports.login = async (req, res) => {
         }
 
         db.query(`SELECT * FROM users WHERE username = ? OR email = ?`, [username, username], async (error, results) => {
-            if(!results || await ) {
-                console.log(results)
+            //console.log(await bcrypt.compare(password, results[0].password))
+            if(results.length < 1 || !(await bcrypt.compare(password, results[0].password))) {
+                return twing.render('index.twig', { 'type': 'danger', 'message': 'Wrong credentials !' }).then((output) => {
+                    res.status(401).end(output);
+                })
+            }else {
+
+                req.session.isLoggedIn = true;
+                req.session.userID = results[0].id;
+
+                res.status(200).redirect('/dashboard');
+
             }
         })
-    } catch (error) {
-        console.log(error)
-    }
 }
 
 exports.register = (req, res) => {
